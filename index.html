@@ -20,12 +20,10 @@
             justify-content: center;
             align-items: center;
             overflow: hidden;
-
             background:
                 radial-gradient(circle at 20% 20%, #25253d 0%, transparent 35%),
                 radial-gradient(circle at 80% 80%, #301722 0%, transparent 35%),
                 #08080d;
-
             color: white;
         }
 
@@ -63,13 +61,10 @@
             }
         }
 
-        /* MAIN CARD */
-
         .container {
             width: 90%;
             max-width: 520px;
             padding: 38px;
-
             position: relative;
             z-index: 2;
 
@@ -97,8 +92,6 @@
                 transform: translateY(0) scale(1);
             }
         }
-
-        /* LOGO */
 
         .logo {
             display: flex;
@@ -176,8 +169,6 @@
             gap: 18px;
         }
 
-        /* BUTTON BASE */
-
         .task-button {
             width: 100%;
             min-height: 64px;
@@ -218,7 +209,7 @@
             background: linear-gradient(
                 90deg,
                 transparent,
-                rgba(255,255,255,0.45),
+                rgba(255, 255, 255, 0.45),
                 transparent
             );
 
@@ -252,7 +243,7 @@
 
             box-shadow:
                 0 10px 0 #bdbdbd,
-                0 18px 40px rgba(255,255,255,0.08);
+                0 18px 40px rgba(255, 255, 255, 0.08);
         }
 
         .tiktok-icon {
@@ -275,7 +266,7 @@
 
             box-shadow:
                 0 10px 0 #870000,
-                0 18px 40px rgba(255,0,0,0.2);
+                0 18px 40px rgba(255, 0, 0, 0.2);
         }
 
         .youtube-icon {
@@ -344,6 +335,53 @@
             }
         }
 
+        /* RETRY MESSAGE */
+
+        .retry-message {
+            pointer-events: none;
+            cursor: not-allowed;
+
+            animation: retryShake 0.45s ease;
+        }
+
+        .retry-message.tiktok-button {
+            background: linear-gradient(
+                135deg,
+                #d8d8d8,
+                #ffffff
+            );
+        }
+
+        .retry-message.youtube-button {
+            background: linear-gradient(
+                135deg,
+                #ff4444,
+                #c40000
+            );
+        }
+
+        @keyframes retryShake {
+            0%, 100% {
+                transform: translateX(0);
+            }
+
+            20% {
+                transform: translateX(-8px);
+            }
+
+            40% {
+                transform: translateX(8px);
+            }
+
+            60% {
+                transform: translateX(-5px);
+            }
+
+            80% {
+                transform: translateX(5px);
+            }
+        }
+
         /* COMPLETED */
 
         .completed {
@@ -394,9 +432,7 @@
             }
         }
 
-        /* =========================
-           UNLOCK PROGRESS
-        ========================= */
+        /* UNLOCK PROGRESS */
 
         .progress-section {
             margin-top: 30px;
@@ -404,12 +440,11 @@
 
             border-radius: 20px;
 
-            background:
-                linear-gradient(
-                    135deg,
-                    rgba(255,255,255,0.07),
-                    rgba(255,255,255,0.025)
-                );
+            background: linear-gradient(
+                135deg,
+                rgba(255,255,255,0.07),
+                rgba(255,255,255,0.025)
+            );
 
             border: 1px solid rgba(255,255,255,0.1);
 
@@ -417,84 +452,34 @@
             overflow: hidden;
         }
 
-        .progress-section::before {
-            content: "";
-
-            position: absolute;
-            width: 180px;
-            height: 180px;
-
-            border-radius: 50%;
-
-            background: rgba(255,255,255,0.08);
-
-            filter: blur(60px);
-
-            top: -100px;
-            right: -60px;
-
-            animation: progressGlow 4s ease-in-out infinite;
-        }
-
-        @keyframes progressGlow {
-            0%, 100% {
-                transform: scale(1);
-                opacity: 0.4;
-            }
-
-            50% {
-                transform: scale(1.5);
-                opacity: 0.8;
-            }
-        }
-
         .progress-header {
             display: flex;
             justify-content: space-between;
             align-items: center;
-
             margin-bottom: 15px;
-
-            position: relative;
-            z-index: 2;
         }
 
         .progress-title {
             font-size: 14px;
             font-weight: 800;
-            letter-spacing: 0.3px;
         }
 
         .progress-percent {
             font-size: 14px;
             font-weight: 900;
-
-            color: white;
-
             padding: 6px 10px;
-
             border-radius: 10px;
-
             background: rgba(255,255,255,0.08);
-
-            transition: 0.4s ease;
         }
 
         .progress-bar {
             width: 100%;
             height: 14px;
-
             border-radius: 20px;
-
             overflow: hidden;
 
             background: rgba(0,0,0,0.35);
-
-            box-shadow:
-                inset 0 2px 8px rgba(0,0,0,0.4);
-
-            position: relative;
-            z-index: 2;
+            box-shadow: inset 0 2px 8px rgba(0,0,0,0.4);
         }
 
         .progress-fill {
@@ -503,26 +488,19 @@
 
             border-radius: 20px;
 
-            position: relative;
-
-            background:
-                linear-gradient(
-                    90deg,
-                    #7a7a7a,
-                    #ffffff,
-                    #7a7a7a
-                );
+            background: linear-gradient(
+                90deg,
+                #7a7a7a,
+                #ffffff,
+                #7a7a7a
+            );
 
             background-size: 200% 100%;
 
-            transition:
-                width 1s cubic-bezier(.2,.8,.2,1);
-
+            transition: width 1s cubic-bezier(.2,.8,.2,1);
             animation: progressShine 2s linear infinite;
 
-            box-shadow:
-                0 0 15px rgba(255,255,255,0.5),
-                0 0 30px rgba(255,255,255,0.15);
+            box-shadow: 0 0 20px rgba(255,255,255,0.4);
         }
 
         @keyframes progressShine {
@@ -535,56 +513,12 @@
             }
         }
 
-        .progress-fill::after {
-            content: "";
-
-            position: absolute;
-
-            top: 0;
-            right: 0;
-
-            width: 30px;
-            height: 100%;
-
-            background: white;
-
-            filter: blur(10px);
-
-            opacity: 0.7;
-        }
-
         .progress-status {
             margin-top: 14px;
-
             text-align: center;
-
             color: #888;
-
             font-size: 12px;
-
-            position: relative;
-            z-index: 2;
-
-            transition: 0.4s ease;
         }
-
-        .progress-section.unlocked {
-            animation: unlockedGlow 1s ease;
-        }
-
-        @keyframes unlockedGlow {
-            0%, 100% {
-                transform: scale(1);
-            }
-
-            50% {
-                transform: scale(1.025);
-                box-shadow:
-                    0 0 40px rgba(24, 201, 110, 0.2);
-            }
-        }
-
-        /* FOOTER */
 
         .footer {
             margin-top: 24px;
@@ -609,16 +543,6 @@
 
             h1 {
                 font-size: 30px;
-            }
-
-            .logo {
-                width: 68px;
-                height: 68px;
-                font-size: 22px;
-            }
-
-            .task-button {
-                min-height: 60px;
             }
         }
     </style>
@@ -659,8 +583,11 @@
                     <path d="M448 209.9v125.1c-44.3 0-87.3-14.4-122.6-40.9v104.4c0 89.1-72.2 161.5-161.5 161.5S2.4 487.6 2.4 398.5 74.6 237 163.9 237c7.3 0 14.5.5 21.5 1.5v126.5c-6.8-2.2-14-3.4-21.5-3.4-20.4 0-37 16.6-37 37s16.6 37 37 37 37-16.6 37-37V0h125.1c0 46.4 37.6 84 84 84v125.9c13.3 0 26.1 0 38-.1z"/>
                 </svg>
 
-                <span id="tiktokText">Follow user</span>
+                <span id="tiktokText">
+                    Follow user
+                </span>
             </button>
+
 
             <!-- YOUTUBE -->
 
@@ -686,12 +613,9 @@
         </div>
 
 
-        <!-- UNLOCK PROGRESS -->
+        <!-- PROGRESS -->
 
-        <div
-            id="progressSection"
-            class="progress-section"
-        >
+        <div class="progress-section">
 
             <div class="progress-header">
 
@@ -743,7 +667,8 @@
                 text: document.getElementById("tiktokText"),
                 checking: false,
                 completed: false,
-                startTime: null
+                startTime: null,
+                originalText: "Follow user"
             },
 
             youtube: {
@@ -752,7 +677,8 @@
                 text: document.getElementById("youtubeText"),
                 checking: false,
                 completed: false,
-                startTime: null
+                startTime: null,
+                originalText: "Subscribe to channel"
             }
         };
 
@@ -766,15 +692,14 @@
         const progressStatus =
             document.getElementById("progressStatus");
 
-        const progressSection =
-            document.getElementById("progressSection");
-
 
         function startChecking(taskName, url) {
 
             const task = tasks[taskName];
 
-            if (task.checking || task.completed) return;
+            if (task.checking || task.completed) {
+                return;
+            }
 
             task.checking = true;
             task.startTime = Date.now();
@@ -782,6 +707,7 @@
             task.button.classList.add("checking");
 
             task.icon.style.display = "none";
+
 
             const spinner =
                 document.createElement("div");
@@ -800,6 +726,7 @@
             );
 
             task.text.textContent = "Checking...";
+
 
             window.open(url, "_blank");
         }
@@ -823,6 +750,11 @@
         }
 
 
+        /*
+            Check when the user returns
+            to the main website.
+        */
+
         window.addEventListener(
             "focus",
             function () {
@@ -840,12 +772,34 @@
                             return;
                         }
 
+
                         const timePassed =
                             Date.now() -
                             task.startTime;
 
-                        if (timePassed >= 7000) {
-                            completeTask(taskName);
+
+                        /*
+                            LESS THAN 7 SECONDS
+                        */
+
+                        if (timePassed < 7000) {
+
+                            showRetryMessage(
+                                taskName
+                            );
+
+                        }
+
+
+                        /*
+                            7 SECONDS OR MORE
+                        */
+
+                        else {
+
+                            completeTask(
+                                taskName
+                            );
                         }
 
                     }
@@ -855,12 +809,90 @@
         );
 
 
-        function completeTask(taskName) {
+        function showRetryMessage(taskName) {
 
             const task = tasks[taskName];
 
             task.checking = false;
-            task.completed = true;
+
+
+            task.button.classList.remove(
+                "checking"
+            );
+
+            task.button.classList.add(
+                "retry-message"
+            );
+
+
+            const spinner =
+                document.getElementById(
+                    taskName + "Spinner"
+                );
+
+            if (spinner) {
+                spinner.remove();
+            }
+
+
+            task.text.textContent =
+                "Did you really Subscribe?";
+
+
+            /*
+                Wait 2 seconds
+                then reset button
+            */
+
+            setTimeout(
+                function () {
+
+                    resetTask(
+                        taskName
+                    );
+
+                },
+                2000
+            );
+        }
+
+
+        function resetTask(taskName) {
+
+            const task =
+                tasks[taskName];
+
+
+            task.button.classList.remove(
+                "retry-message"
+            );
+
+
+            task.icon.style.display =
+                "block";
+
+
+            task.text.textContent =
+                task.originalText;
+
+
+            task.startTime =
+                null;
+        }
+
+
+        function completeTask(taskName) {
+
+            const task =
+                tasks[taskName];
+
+
+            task.checking =
+                false;
+
+            task.completed =
+                true;
+
 
             task.button.classList.remove(
                 "checking"
@@ -896,8 +928,11 @@
             const check =
                 document.createElement("span");
 
-            check.className = "check-icon";
-            check.textContent = "✓";
+            check.className =
+                "check-icon";
+
+            check.textContent =
+                "✓";
 
 
             task.button.insertBefore(
@@ -906,16 +941,15 @@
             );
 
 
-            task.button.onclick = null;
-
-
             updateProgress();
         }
 
 
         function updateProgress() {
 
-            let completedCount = 0;
+            let completedCount =
+                0;
+
 
             Object.keys(tasks).forEach(
                 function (taskName) {
@@ -930,19 +964,16 @@
             );
 
 
-            const totalTasks = 2;
-
             const percentage =
-                (completedCount / totalTasks) * 100;
+                (completedCount / 2) * 100;
 
 
             progressFill.style.width =
                 percentage + "%";
 
 
-            animatePercentage(
-                percentage
-            );
+            progressPercent.textContent =
+                percentage + "%";
 
 
             if (percentage === 0) {
@@ -959,64 +990,11 @@
 
             }
 
-            else if (percentage === 100) {
+            else {
 
                 progressStatus.textContent =
                     "🎉 All actions completed! Key unlocked!";
-
-                progressSection.classList.add(
-                    "unlocked"
-                );
             }
-
-        }
-
-
-        function animatePercentage(target) {
-
-            const start =
-                parseInt(
-                    progressPercent.textContent
-                ) || 0;
-
-            const duration = 700;
-
-            const startTime =
-                performance.now();
-
-
-            function update(currentTime) {
-
-                const progress =
-                    Math.min(
-                        (currentTime - startTime) /
-                        duration,
-                        1
-                    );
-
-
-                const value =
-                    Math.floor(
-                        start +
-                        (target - start) * progress
-                    );
-
-
-                progressPercent.textContent =
-                    value + "%";
-
-
-                if (progress < 1) {
-
-                    requestAnimationFrame(
-                        update
-                    );
-                }
-
-            }
-
-
-            requestAnimationFrame(update);
         }
 
     </script>
