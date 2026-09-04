@@ -19,7 +19,7 @@
             display: flex;
             justify-content: center;
             align-items: center;
-            overflow: hidden;
+            overflow-x: hidden;
             background:
                 radial-gradient(circle at 20% 20%, #25253d 0%, transparent 35%),
                 radial-gradient(circle at 80% 80%, #301722 0%, transparent 35%),
@@ -61,6 +61,8 @@
             }
         }
 
+        /* ================= CARD ================= */
+
         .container {
             width: 90%;
             max-width: 520px;
@@ -93,6 +95,12 @@
             }
         }
 
+        .hidden {
+            display: none !important;
+        }
+
+        /* ================= LOGO ================= */
+
         .logo {
             display: flex;
             justify-content: center;
@@ -123,6 +131,8 @@
                 transform: translateY(-7px) rotate(2deg);
             }
         }
+
+        /* ================= TITLE ================= */
 
         h1 {
             text-align: center;
@@ -168,6 +178,8 @@
             flex-direction: column;
             gap: 18px;
         }
+
+        /* ================= BUTTONS ================= */
 
         .task-button {
             width: 100%;
@@ -226,24 +238,25 @@
         }
 
         .task-button:active {
-            transform: translateY(0) scale(0.97);
+            transform: scale(0.97);
         }
 
-        /* TIKTOK */
+        /* ================= TIKTOK ================= */
 
         .tiktok-button {
             color: #000;
 
-            background: linear-gradient(
-                135deg,
-                #ffffff,
-                #e9e9e9,
-                #ffffff
-            );
+            background:
+                linear-gradient(
+                    135deg,
+                    #ffffff,
+                    #e9e9e9,
+                    #ffffff
+                );
 
             box-shadow:
                 0 10px 0 #bdbdbd,
-                0 18px 40px rgba(255, 255, 255, 0.08);
+                0 18px 40px rgba(255,255,255,0.08);
         }
 
         .tiktok-icon {
@@ -252,21 +265,22 @@
             fill: #000;
         }
 
-        /* YOUTUBE */
+        /* ================= YOUTUBE ================= */
 
         .youtube-button {
             color: white;
 
-            background: linear-gradient(
-                135deg,
-                #ff2828,
-                #e00000 50%,
-                #b90000
-            );
+            background:
+                linear-gradient(
+                    135deg,
+                    #ff2828,
+                    #e00000 50%,
+                    #b90000
+                );
 
             box-shadow:
                 0 10px 0 #870000,
-                0 18px 40px rgba(255, 0, 0, 0.2);
+                0 18px 40px rgba(255,0,0,0.2);
         }
 
         .youtube-icon {
@@ -275,7 +289,7 @@
             fill: white;
         }
 
-        /* CHECKING */
+        /* ================= CHECKING ================= */
 
         .checking {
             pointer-events: none;
@@ -283,32 +297,13 @@
             animation: checkingPulse 1.2s ease-in-out infinite;
         }
 
-        .checking.tiktok-button {
-            background: linear-gradient(
-                135deg,
-                #d8d8d8,
-                #ffffff,
-                #d8d8d8
-            );
-        }
-
-        .checking.youtube-button {
-            background: linear-gradient(
-                135deg,
-                #ff5555,
-                #ff0000,
-                #b90000
-            );
-        }
-
         @keyframes checkingPulse {
             0%, 100% {
                 transform: scale(1);
-                filter: brightness(1);
             }
 
             50% {
-                transform: scale(1.015);
+                transform: scale(1.02);
                 filter: brightness(1.15);
             }
         }
@@ -317,16 +312,17 @@
             width: 22px;
             height: 22px;
 
-            border: 3px solid rgba(255, 255, 255, 0.35);
+            border: 3px solid rgba(255,255,255,0.3);
             border-top-color: white;
 
             border-radius: 50%;
+
             animation: spin 0.7s linear infinite;
         }
 
         .tiktok-spinner {
-            border-color: rgba(0, 0, 0, 0.2);
-            border-top-color: #000;
+            border-color: rgba(0,0,0,0.2);
+            border-top-color: black;
         }
 
         @keyframes spin {
@@ -335,67 +331,97 @@
             }
         }
 
-        /* RETRY MESSAGE */
+        /* ================= WARNING ================= */
 
         .retry-message {
+            color: white !important;
             pointer-events: none;
-            cursor: not-allowed;
 
-            animation: retryShake 0.45s ease;
+            background:
+                linear-gradient(
+                    135deg,
+                    #ff1b1b,
+                    #9b0000,
+                    #ff0000,
+                    #6b0000
+                ) !important;
+
+            background-size: 300% 300%;
+
+            border: 2px solid rgba(255,70,70,0.9);
+
+            box-shadow:
+                0 0 20px rgba(255,0,0,0.9),
+                0 0 60px rgba(255,0,0,0.6),
+                0 0 120px rgba(255,0,0,0.3);
+
+            animation:
+                warningShake 0.45s ease-in-out infinite,
+                warningPulse 0.8s ease-in-out infinite,
+                warningGradient 2s linear infinite;
         }
 
-        .retry-message.tiktok-button {
-            background: linear-gradient(
-                135deg,
-                #d8d8d8,
-                #ffffff
-            );
-        }
-
-        .retry-message.youtube-button {
-            background: linear-gradient(
-                135deg,
-                #ff4444,
-                #c40000
-            );
-        }
-
-        @keyframes retryShake {
+        @keyframes warningShake {
             0%, 100% {
                 transform: translateX(0);
             }
 
             20% {
-                transform: translateX(-8px);
+                transform: translateX(-10px);
             }
 
             40% {
-                transform: translateX(8px);
+                transform: translateX(10px);
             }
 
             60% {
-                transform: translateX(-5px);
+                transform: translateX(-6px);
             }
 
             80% {
-                transform: translateX(5px);
+                transform: translateX(6px);
             }
         }
 
-        /* COMPLETED */
+        @keyframes warningPulse {
+            0%, 100% {
+                filter: brightness(1);
+            }
+
+            50% {
+                filter: brightness(1.7);
+            }
+        }
+
+        @keyframes warningGradient {
+            0% {
+                background-position: 0% 50%;
+            }
+
+            50% {
+                background-position: 100% 50%;
+            }
+
+            100% {
+                background-position: 0% 50%;
+            }
+        }
+
+        /* ================= COMPLETED ================= */
 
         .completed {
             color: white;
 
-            background: linear-gradient(
-                135deg,
-                #20df7a,
-                #0aa552
-            ) !important;
+            background:
+                linear-gradient(
+                    135deg,
+                    #20df7a,
+                    #0aa552
+                ) !important;
 
             box-shadow:
                 0 10px 0 #08763d,
-                0 18px 45px rgba(24, 201, 110, 0.25);
+                0 18px 45px rgba(24,201,110,0.3);
 
             pointer-events: none;
 
@@ -404,11 +430,11 @@
 
         @keyframes completedPop {
             0% {
-                transform: scale(0.92);
+                transform: scale(0.9);
             }
 
             70% {
-                transform: scale(1.04);
+                transform: scale(1.05);
             }
 
             100% {
@@ -419,20 +445,9 @@
         .check-icon {
             font-size: 22px;
             font-weight: bold;
-            animation: checkPop 0.5s ease;
         }
 
-        @keyframes checkPop {
-            0% {
-                transform: scale(0) rotate(-90deg);
-            }
-
-            100% {
-                transform: scale(1) rotate(0);
-            }
-        }
-
-        /* UNLOCK PROGRESS */
+        /* ================= PROGRESS ================= */
 
         .progress-section {
             margin-top: 30px;
@@ -440,22 +455,19 @@
 
             border-radius: 20px;
 
-            background: linear-gradient(
-                135deg,
-                rgba(255,255,255,0.07),
-                rgba(255,255,255,0.025)
-            );
+            background:
+                linear-gradient(
+                    135deg,
+                    rgba(255,255,255,0.07),
+                    rgba(255,255,255,0.025)
+                );
 
             border: 1px solid rgba(255,255,255,0.1);
-
-            position: relative;
-            overflow: hidden;
         }
 
         .progress-header {
             display: flex;
             justify-content: space-between;
-            align-items: center;
             margin-bottom: 15px;
         }
 
@@ -467,19 +479,16 @@
         .progress-percent {
             font-size: 14px;
             font-weight: 900;
-            padding: 6px 10px;
-            border-radius: 10px;
-            background: rgba(255,255,255,0.08);
         }
 
         .progress-bar {
             width: 100%;
             height: 14px;
+
             border-radius: 20px;
             overflow: hidden;
 
-            background: rgba(0,0,0,0.35);
-            box-shadow: inset 0 2px 8px rgba(0,0,0,0.4);
+            background: rgba(0,0,0,0.4);
         }
 
         .progress-fill {
@@ -488,19 +497,20 @@
 
             border-radius: 20px;
 
-            background: linear-gradient(
-                90deg,
-                #7a7a7a,
-                #ffffff,
-                #7a7a7a
-            );
+            background:
+                linear-gradient(
+                    90deg,
+                    #777,
+                    white,
+                    #777
+                );
 
-            background-size: 200% 100%;
+            background-size: 200%;
 
-            transition: width 1s cubic-bezier(.2,.8,.2,1);
+            transition:
+                width 1s cubic-bezier(.2,.8,.2,1);
+
             animation: progressShine 2s linear infinite;
-
-            box-shadow: 0 0 20px rgba(255,255,255,0.4);
         }
 
         @keyframes progressShine {
@@ -520,20 +530,390 @@
             font-size: 12px;
         }
 
-        .footer {
-            margin-top: 24px;
-            padding-top: 18px;
+        /* ================= ISSUES ================= */
 
-            border-top: 1px solid rgba(255,255,255,0.07);
-
+        .issues {
+            margin-top: 14px;
             text-align: center;
-            font-size: 12px;
-            color: #666;
+            font-size: 11px;
+            color: #555;
+            letter-spacing: 0.3px;
         }
 
-        .footer span {
-            color: white;
+        .issues span {
+            color: #aaa;
             font-weight: bold;
+        }
+
+        /* =========================================
+           KEY LOADING SCREEN
+        ========================================= */
+
+        .key-loading {
+            text-align: center;
+            padding: 45px 10px;
+            animation: loadingAppear 0.5s ease;
+        }
+
+        @keyframes loadingAppear {
+            from {
+                opacity: 0;
+                transform: scale(0.9);
+            }
+
+            to {
+                opacity: 1;
+                transform: scale(1);
+            }
+        }
+
+        .mega-spinner {
+            width: 100px;
+            height: 100px;
+
+            margin: 0 auto 30px;
+
+            border-radius: 50%;
+
+            border: 7px solid rgba(255,255,255,0.08);
+            border-top-color: white;
+            border-right-color: #777;
+
+            box-shadow:
+                0 0 25px rgba(255,255,255,0.25),
+                0 0 70px rgba(255,255,255,0.1);
+
+            animation:
+                megaSpin 0.8s linear infinite,
+                megaPulse 1.2s ease-in-out infinite;
+        }
+
+        @keyframes megaSpin {
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        @keyframes megaPulse {
+            0%, 100% {
+                filter: brightness(1);
+            }
+
+            50% {
+                filter: brightness(1.8);
+            }
+        }
+
+        .creating-text {
+            font-size: 27px;
+            font-weight: 900;
+            letter-spacing: -0.5px;
+
+            animation: creatingPulse 1s ease-in-out infinite;
+        }
+
+        @keyframes creatingPulse {
+            0%, 100% {
+                opacity: 0.55;
+                transform: scale(1);
+            }
+
+            50% {
+                opacity: 1;
+                transform: scale(1.04);
+            }
+        }
+
+        .loading-dots::after {
+            content: "";
+            animation: dots 1.4s steps(4,end) infinite;
+        }
+
+        @keyframes dots {
+            0% {
+                content: "";
+            }
+
+            25% {
+                content: ".";
+            }
+
+            50% {
+                content: "..";
+            }
+
+            75%, 100% {
+                content: "...";
+            }
+        }
+
+        /* =========================================
+           KEY RESULT
+        ========================================= */
+
+        .key-result {
+            text-align: center;
+            animation: resultAppear 0.8s cubic-bezier(.2,.9,.2,1);
+        }
+
+        @keyframes resultAppear {
+            from {
+                opacity: 0;
+                transform: translateY(30px) scale(0.85);
+            }
+
+            70% {
+                transform: translateY(-5px) scale(1.03);
+            }
+
+            to {
+                opacity: 1;
+                transform: translateY(0) scale(1);
+            }
+        }
+
+        .success-icon {
+            width: 82px;
+            height: 82px;
+
+            margin: 0 auto 22px;
+
+            display: flex;
+            align-items: center;
+            justify-content: center;
+
+            border-radius: 50%;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    #20df7a,
+                    #0aa552
+                );
+
+            font-size: 40px;
+
+            box-shadow:
+                0 0 25px rgba(24,201,110,0.6),
+                0 0 70px rgba(24,201,110,0.25);
+
+            animation:
+                successPop 0.7s cubic-bezier(.2,1.5,.4,1);
+        }
+
+        @keyframes successPop {
+            from {
+                transform: scale(0) rotate(-180deg);
+            }
+
+            to {
+                transform: scale(1) rotate(0);
+            }
+        }
+
+        .created-title {
+            font-size: 28px;
+            font-weight: 900;
+            margin-bottom: 30px;
+
+            background:
+                linear-gradient(
+                    90deg,
+                    #20df7a,
+                    #ffffff,
+                    #20df7a
+                );
+
+            background-size: 200%;
+
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+
+            animation: titleGlow 2s linear infinite;
+        }
+
+        .key-label {
+            margin-bottom: 14px;
+
+            font-size: 20px;
+            font-weight: 900;
+
+            background:
+                linear-gradient(
+                    90deg,
+                    #ffcc00,
+                    white,
+                    #ffcc00
+                );
+
+            background-size: 200%;
+
+            -webkit-background-clip: text;
+            -webkit-text-fill-color: transparent;
+
+            animation:
+                titleGlow 1.5s linear infinite,
+                labelFloat 2s ease-in-out infinite;
+        }
+
+        @keyframes labelFloat {
+            0%, 100% {
+                transform: translateY(0);
+            }
+
+            50% {
+                transform: translateY(-5px);
+            }
+        }
+
+        .key-box {
+            width: 100%;
+            padding: 20px;
+
+            border-radius: 18px;
+
+            font-size: 18px;
+            font-weight: 900;
+
+            word-break: break-all;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    rgba(255,255,255,0.13),
+                    rgba(255,255,255,0.04)
+                );
+
+            border:
+                1px solid rgba(255,255,255,0.2);
+
+            box-shadow:
+                inset 0 1px 0 rgba(255,255,255,0.12),
+                0 15px 40px rgba(0,0,0,0.3);
+
+            position: relative;
+            overflow: hidden;
+
+            animation: keyGlow 2s ease-in-out infinite;
+        }
+
+        .key-box::before {
+            content: "";
+
+            position: absolute;
+            top: 0;
+            left: -100%;
+
+            width: 70%;
+            height: 100%;
+
+            background:
+                linear-gradient(
+                    90deg,
+                    transparent,
+                    rgba(255,255,255,0.25),
+                    transparent
+                );
+
+            transform: skewX(-25deg);
+
+            animation: keyShine 2.5s linear infinite;
+        }
+
+        @keyframes keyGlow {
+            0%, 100% {
+                box-shadow:
+                    0 0 15px rgba(255,255,255,0.1),
+                    0 15px 40px rgba(0,0,0,0.3);
+            }
+
+            50% {
+                box-shadow:
+                    0 0 30px rgba(255,255,255,0.3),
+                    0 0 70px rgba(255,255,255,0.08);
+            }
+        }
+
+        @keyframes keyShine {
+            from {
+                left: -100%;
+            }
+
+            to {
+                left: 150%;
+            }
+        }
+
+        .copy-button {
+            width: 100%;
+            margin-top: 18px;
+            padding: 17px;
+
+            border: none;
+            border-radius: 16px;
+
+            cursor: pointer;
+
+            color: black;
+            font-size: 16px;
+            font-weight: 900;
+
+            background:
+                linear-gradient(
+                    135deg,
+                    white,
+                    #c9c9c9
+                );
+
+            box-shadow:
+                0 8px 0 #969696,
+                0 15px 35px rgba(255,255,255,0.1);
+
+            transition:
+                transform 0.2s ease,
+                filter 0.2s ease;
+        }
+
+        .copy-button:hover {
+            transform: translateY(-4px);
+            filter: brightness(1.1);
+        }
+
+        .copy-button:active {
+            transform: translateY(4px);
+            box-shadow:
+                0 3px 0 #969696;
+        }
+
+        .copy-success {
+            background:
+                linear-gradient(
+                    135deg,
+                    #20df7a,
+                    #0aa552
+                ) !important;
+
+            color: white !important;
+
+            box-shadow:
+                0 8px 0 #08763d,
+                0 15px 40px rgba(24,201,110,0.3) !important;
+
+            animation: copyPop 0.5s ease;
+        }
+
+        @keyframes copyPop {
+            0% {
+                transform: scale(0.95);
+            }
+
+            60% {
+                transform: scale(1.04);
+            }
+
+            100% {
+                transform: scale(1);
+            }
         }
 
         @media (max-width: 500px) {
@@ -555,104 +935,165 @@
 
     <main class="container">
 
-        <div class="logo">
-            LHX
-        </div>
+        <!-- ================= MAIN KEYSYSTEM ================= -->
 
-        <h1>LHX Keysystem</h1>
+        <div id="mainSystem">
 
-        <p class="subtitle">
-            Complete the actions below to get the key! 🔑
-        </p>
+            <div class="logo">
+                LHX
+            </div>
 
-        <div class="tasks">
+            <h1>LHX Keysystem</h1>
 
-            <!-- TIKTOK -->
+            <p class="subtitle">
+                Complete the actions below to get the key! 🔑
+            </p>
 
-            <button
-                id="tiktokButton"
-                class="task-button tiktok-button"
-                onclick="openTikTok()"
-            >
-                <svg
-                    id="tiktokIcon"
-                    class="tiktok-icon"
-                    viewBox="0 0 448 512"
-                    aria-hidden="true"
+            <div class="tasks">
+
+                <!-- TIKTOK -->
+
+                <button
+                    id="tiktokButton"
+                    class="task-button tiktok-button"
+                    onclick="openTikTok()"
                 >
-                    <path d="M448 209.9v125.1c-44.3 0-87.3-14.4-122.6-40.9v104.4c0 89.1-72.2 161.5-161.5 161.5S2.4 487.6 2.4 398.5 74.6 237 163.9 237c7.3 0 14.5.5 21.5 1.5v126.5c-6.8-2.2-14-3.4-21.5-3.4-20.4 0-37 16.6-37 37s16.6 37 37 37 37-16.6 37-37V0h125.1c0 46.4 37.6 84 84 84v125.9c13.3 0 26.1 0 38-.1z"/>
-                </svg>
+                    <svg
+                        id="tiktokIcon"
+                        class="tiktok-icon"
+                        viewBox="0 0 448 512"
+                    >
+                        <path d="M448 209.9v125.1c-44.3 0-87.3-14.4-122.6-40.9v104.4c0 89.1-72.2 161.5-161.5 161.5S2.4 487.6 2.4 398.5 74.6 237 163.9 237c7.3 0 14.5.5 21.5 1.5v126.5c-6.8-2.2-14-3.4-21.5-3.4-20.4 0-37 16.6-37 37s16.6 37 37 37 37-16.6 37-37V0h125.1c0 46.4 37.6 84 84 84v125.9c13.3 0 26.1 0 38-.1z"/>
+                    </svg>
 
-                <span id="tiktokText">
-                    Follow user
-                </span>
-            </button>
+                    <span id="tiktokText">
+                        Follow user
+                    </span>
+                </button>
 
 
-            <!-- YOUTUBE -->
+                <!-- YOUTUBE -->
 
-            <button
-                id="youtubeButton"
-                class="task-button youtube-button"
-                onclick="openYouTube()"
-            >
-                <svg
-                    id="youtubeIcon"
-                    class="youtube-icon"
-                    viewBox="0 0 576 512"
-                    aria-hidden="true"
+                <button
+                    id="youtubeButton"
+                    class="task-button youtube-button"
+                    onclick="openYouTube()"
                 >
-                    <path d="M549.7 124.1c-6.3-23.7-24.8-42.2-48.6-48.6C458.8 64 288 64 288 64S117.2 64 74.9 75.5c-23.8 6.4-42.3 24.9-48.6 48.6C14.8 167 14.8 256 14.8 256s0 89 11.5 131.9c6.3 23.7 24.8 42.2 48.6 48.6C117.2 448 288 448 288 448s170.8 0 213.1-11.5c23.8-6.4 42.3-24.9 48.6-48.6C561.2 345 561.2 256 561.2 256s0-89-11.5-131.9zM232 337V175l142.7 81L232 337z"/>
-                </svg>
+                    <svg
+                        id="youtubeIcon"
+                        class="youtube-icon"
+                        viewBox="0 0 576 512"
+                    >
+                        <path d="M549.7 124.1c-6.3-23.7-24.8-42.2-48.6-48.6C458.8 64 288 64 288 64S117.2 64 74.9 75.5c-23.8 6.4-42.3 24.9-48.6 48.6C14.8 167 14.8 256 14.8 256s0 89 11.5 131.9c6.3 23.7 24.8 42.2 48.6 48.6C117.2 448 288 448s170.8 0 213.1-11.5c23.8-6.4 42.3-24.9 48.6-48.6C561.2 345 561.2 256 561.2 256s0-89-11.5-131.9zM232 337V175l142.7 81L232 337z"/>
+                    </svg>
 
-                <span id="youtubeText">
-                    Subscribe to channel
-                </span>
-            </button>
+                    <span id="youtubeText">
+                        Subscribe to channel
+                    </span>
+                </button>
 
-        </div>
+            </div>
 
 
-        <!-- PROGRESS -->
+            <!-- PROGRESS -->
 
-        <div class="progress-section">
+            <div class="progress-section">
 
-            <div class="progress-header">
+                <div class="progress-header">
 
-                <div class="progress-title">
-                    🔓 Unlock Progress
+                    <div class="progress-title">
+                        🔓 Unlock Progress
+                    </div>
+
+                    <div
+                        id="progressPercent"
+                        class="progress-percent"
+                    >
+                        0%
+                    </div>
+
+                </div>
+
+                <div class="progress-bar">
+
+                    <div
+                        id="progressFill"
+                        class="progress-fill"
+                    ></div>
+
                 </div>
 
                 <div
-                    id="progressPercent"
-                    class="progress-percent"
+                    id="progressStatus"
+                    class="progress-status"
                 >
-                    0%
+                    Complete both actions to unlock your key
                 </div>
 
             </div>
 
-            <div class="progress-bar">
 
-                <div
-                    id="progressFill"
-                    class="progress-fill"
-                ></div>
+            <div class="issues">
+                Any issues? DM <span>lhx10</span> on DC
+            </div>
 
+        </div>
+
+
+        <!-- ================= CREATING KEY ================= -->
+
+        <div
+            id="keyLoading"
+            class="key-loading hidden"
+        >
+
+            <div class="mega-spinner"></div>
+
+            <div class="creating-text">
+                Creating your key<span class="loading-dots"></span>
+            </div>
+
+        </div>
+
+
+        <!-- ================= KEY RESULT ================= -->
+
+        <div
+            id="keyResult"
+            class="key-result hidden"
+        >
+
+            <div class="success-icon">
+                ✓
+            </div>
+
+            <div class="created-title">
+                We created your key! ✅
+            </div>
+
+            <div class="key-label">
+                This is your key!!
             </div>
 
             <div
-                id="progressStatus"
-                class="progress-status"
+                id="keyBox"
+                class="key-box"
             >
-                Complete both actions to unlock your key
+                lhxlikesscripting291
             </div>
 
-        </div>
+            <button
+                id="copyButton"
+                class="copy-button"
+                onclick="copyKey()"
+            >
+                📋 Copy Key
+            </button>
 
+            <div class="issues">
+                Any issues? DM <span>lhx10</span> on DC
+            </div>
 
-        <div class="footer">
-            <span>LHX</span> • Key System
         </div>
 
     </main>
@@ -661,74 +1102,134 @@
     <script>
 
         const tasks = {
+
             tiktok: {
-                button: document.getElementById("tiktokButton"),
-                icon: document.getElementById("tiktokIcon"),
-                text: document.getElementById("tiktokText"),
+                button:
+                    document.getElementById(
+                        "tiktokButton"
+                    ),
+
+                icon:
+                    document.getElementById(
+                        "tiktokIcon"
+                    ),
+
+                text:
+                    document.getElementById(
+                        "tiktokText"
+                    ),
+
                 checking: false,
                 completed: false,
                 startTime: null,
-                originalText: "Follow user"
+
+                originalText:
+                    "Follow user",
+
+                warningText:
+                    "⚠️ Did you really followed?"
             },
 
+
             youtube: {
-                button: document.getElementById("youtubeButton"),
-                icon: document.getElementById("youtubeIcon"),
-                text: document.getElementById("youtubeText"),
+                button:
+                    document.getElementById(
+                        "youtubeButton"
+                    ),
+
+                icon:
+                    document.getElementById(
+                        "youtubeIcon"
+                    ),
+
+                text:
+                    document.getElementById(
+                        "youtubeText"
+                    ),
+
                 checking: false,
                 completed: false,
                 startTime: null,
-                originalText: "Subscribe to channel"
+
+                originalText:
+                    "Subscribe to channel",
+
+                warningText:
+                    "⚠️ Did you really subscribe?"
             }
+
         };
 
 
         const progressFill =
-            document.getElementById("progressFill");
+            document.getElementById(
+                "progressFill"
+            );
 
         const progressPercent =
-            document.getElementById("progressPercent");
+            document.getElementById(
+                "progressPercent"
+            );
 
         const progressStatus =
-            document.getElementById("progressStatus");
+            document.getElementById(
+                "progressStatus"
+            );
 
 
         function startChecking(taskName, url) {
 
             const task = tasks[taskName];
 
-            if (task.checking || task.completed) {
+            if (
+                task.checking ||
+                task.completed
+            ) {
                 return;
             }
 
             task.checking = true;
             task.startTime = Date.now();
 
-            task.button.classList.add("checking");
+            task.button.classList.add(
+                "checking"
+            );
 
-            task.icon.style.display = "none";
+            task.icon.style.display =
+                "none";
 
 
             const spinner =
                 document.createElement("div");
 
-            spinner.className = "loading-spinner";
+            spinner.className =
+                "loading-spinner";
 
-            if (taskName === "tiktok") {
-                spinner.classList.add("tiktok-spinner");
+            if (
+                taskName === "tiktok"
+            ) {
+                spinner.classList.add(
+                    "tiktok-spinner"
+                );
             }
 
-            spinner.id = taskName + "Spinner";
+            spinner.id =
+                taskName + "Spinner";
+
 
             task.button.insertBefore(
                 spinner,
                 task.text
             );
 
-            task.text.textContent = "Checking...";
+            task.text.textContent =
+                "Checking...";
 
 
-            window.open(url, "_blank");
+            window.open(
+                url,
+                "_blank"
+            );
         }
 
 
@@ -750,11 +1251,6 @@
         }
 
 
-        /*
-            Check when the user returns
-            to the main website.
-        */
-
         window.addEventListener(
             "focus",
             function () {
@@ -772,28 +1268,20 @@
                             return;
                         }
 
-
                         const timePassed =
                             Date.now() -
                             task.startTime;
 
 
-                        /*
-                            LESS THAN 7 SECONDS
-                        */
-
-                        if (timePassed < 7000) {
+                        if (
+                            timePassed < 7000
+                        ) {
 
                             showRetryMessage(
                                 taskName
                             );
 
                         }
-
-
-                        /*
-                            7 SECONDS OR MORE
-                        */
 
                         else {
 
@@ -811,10 +1299,14 @@
 
         function showRetryMessage(taskName) {
 
-            const task = tasks[taskName];
+            const task =
+                tasks[taskName];
 
-            task.checking = false;
+            task.checking =
+                false;
 
+            task.startTime =
+                null;
 
             task.button.classList.remove(
                 "checking"
@@ -835,22 +1327,16 @@
             }
 
 
+            task.icon.style.display =
+                "none";
+
             task.text.textContent =
-                "Did you really Subscribe?";
+                task.warningText;
 
-
-            /*
-                Wait 2 seconds
-                then reset button
-            */
 
             setTimeout(
                 function () {
-
-                    resetTask(
-                        taskName
-                    );
-
+                    resetTask(taskName);
                 },
                 2000
             );
@@ -862,19 +1348,18 @@
             const task =
                 tasks[taskName];
 
-
             task.button.classList.remove(
                 "retry-message"
             );
 
-
             task.icon.style.display =
                 "block";
-
 
             task.text.textContent =
                 task.originalText;
 
+            task.checking =
+                false;
 
             task.startTime =
                 null;
@@ -886,12 +1371,14 @@
             const task =
                 tasks[taskName];
 
-
             task.checking =
                 false;
 
             task.completed =
                 true;
+
+            task.startTime =
+                null;
 
 
             task.button.classList.remove(
@@ -921,12 +1408,17 @@
             }
 
 
+            task.icon.style.display =
+                "none";
+
             task.text.textContent =
                 "Completed";
 
 
             const check =
-                document.createElement("span");
+                document.createElement(
+                    "span"
+                );
 
             check.className =
                 "check-icon";
@@ -947,9 +1439,7 @@
 
         function updateProgress() {
 
-            let completedCount =
-                0;
-
+            let completedCount = 0;
 
             Object.keys(tasks).forEach(
                 function (taskName) {
@@ -971,30 +1461,117 @@
             progressFill.style.width =
                 percentage + "%";
 
-
             progressPercent.textContent =
                 percentage + "%";
 
 
-            if (percentage === 0) {
-
-                progressStatus.textContent =
-                    "Complete both actions to unlock your key";
-
-            }
-
-            else if (percentage === 50) {
+            if (percentage === 50) {
 
                 progressStatus.textContent =
                     "Almost there! Complete 1 more action";
 
             }
 
-            else {
+
+            if (percentage === 100) {
 
                 progressStatus.textContent =
-                    "🎉 All actions completed! Key unlocked!";
+                    "🎉 All actions completed! Creating key...";
+
+                setTimeout(
+                    createKey,
+                    900
+                );
             }
+        }
+
+
+        function createKey() {
+
+            document
+                .getElementById("mainSystem")
+                .classList.add("hidden");
+
+
+            document
+                .getElementById("keyLoading")
+                .classList.remove("hidden");
+
+
+            /*
+                3 SECOND KEY CREATION
+            */
+
+            setTimeout(
+                function () {
+
+                    document
+                        .getElementById("keyLoading")
+                        .classList.add("hidden");
+
+
+                    document
+                        .getElementById("keyResult")
+                        .classList.remove("hidden");
+
+                },
+                3000
+            );
+        }
+
+
+        function copyKey() {
+
+            const key =
+                "lhxlikesscripting291";
+
+
+            navigator.clipboard
+                .writeText(key)
+                .then(
+                    function () {
+
+                        const button =
+                            document.getElementById(
+                                "copyButton"
+                            );
+
+
+                        button.textContent =
+                            "✓ Key Copied!";
+
+
+                        button.classList.add(
+                            "copy-success"
+                        );
+
+
+                        setTimeout(
+                            function () {
+
+                                button.textContent =
+                                    "📋 Copy Key";
+
+
+                                button.classList.remove(
+                                    "copy-success"
+                                );
+
+                            },
+                            2000
+                        );
+
+                    }
+                )
+                .catch(
+                    function () {
+
+                        alert(
+                            "Could not copy automatically."
+                        );
+
+                    }
+                );
         }
 
     </script>
