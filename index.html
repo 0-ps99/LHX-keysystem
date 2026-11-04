@@ -1210,7 +1210,7 @@
 
             <div id="keyExpiry" class="key-expiry">
 
-                Key expires in 06:00:00
+                One-time key • can only be used once
 
             </div>
 
@@ -1512,93 +1512,48 @@
 
         }
 
-        function createKey() {
+        async function createKey() {
 
             document.getElementById("mainSystem").classList.add("hidden");
 
             document.getElementById("keyLoading").classList.remove("hidden");
 
-            // 3-second key creation.
+            setTimeout(async function () {
 
-            setTimeout(function () {
+                try {
 
-                const key =
+                    const response = await fetch(
+                        "https://vrslvspkpymioyiobnla.supabase.co/functions/v1/create-key",
+                        {
+                            method: "POST",
+                            headers: {
+                                "Content-Type": "application/json",
+                                "apikey": "sb_publishable_SBj2tLuJ3FE9gaqkHn9OeQ_zabOwC5v"
+                            },
+                            body: JSON.stringify({})
+                        }
+                    );
 
-                    "LHX-" +
+                    const result = await response.json();
+                    if (!response.ok || !result.success || !result.key) {
+                        throw new Error("Key creation failed");
+                    }
 
-                    Array.from(
+                    document.getElementById("keyBox").textContent = result.key;
+                    document.getElementById("keyLoading").classList.add("hidden");
+                    document.getElementById("keyResult").classList.remove("hidden");
+                    document.getElementById("keyExpiry").textContent = "One-time key • can only be used once";
 
-                        crypto.getRandomValues(new Uint8Array(24)),
+                } catch (error) {
 
-                        b => b.toString(16).padStart(2, "0")
-
-                    ).join("");
-
-                document.getElementById("keyBox").textContent = key;
-
-                document.getElementById("keyLoading").classList.add("hidden");
-
-                document.getElementById("keyResult").classList.remove("hidden");
-
-                // Key countdown: 6 hours.
-
-                let secondsLeft = 6 * 60 * 60;
-
-                const expiry = document.getElementById("keyExpiry");
-
-                const copyButton = document.getElementById("copyButton");
-
-                function updateExpiry() {
-
-                    const hours = Math.floor(secondsLeft / 3600);
-
-                    const minutes = Math.floor((secondsLeft % 3600) / 60);
-
-                    const seconds = secondsLeft % 60;
-
-                    expiry.textContent =
-
-                        "Key expires in " +
-
-                        String(hours).padStart(2, "0") + ":" +
-
-                        String(minutes).padStart(2, "0") + ":" +
-
-                        String(seconds).padStart(2, "0");
+                    console.error("LHX key creation error:", error);
+                    document.getElementById("keyLoading").classList.add("hidden");
+                    document.getElementById("mainSystem").classList.remove("hidden");
+                    document.getElementById("progressStatus").textContent = "Could not create your key. Please try again.";
 
                 }
 
-                updateExpiry();
-
-                const countdown = setInterval(function () {
-
-                    secondsLeft--;
-
-                    if (secondsLeft <= 0) {
-
-                        clearInterval(countdown);
-
-                        document.getElementById("keyBox").textContent = "EXPIRED";
-
-                        expiry.textContent = "Key expired!";
-
-                        copyButton.disabled = true;
-
-                        copyButton.textContent = "Key Expired";
-
-                        copyButton.style.opacity = "0.5";
-
-                        copyButton.style.cursor = "not-allowed";
-
-                        return;
-
-                    }
-
-                    updateExpiry();
-
-                }, 1000);
-
-            }, 3000);
+            }, 1200);
 
         }
 
